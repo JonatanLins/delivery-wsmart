@@ -1,0 +1,50 @@
+page-login {
+  
+  .content{
+    background: linear-gradient(-240deg, #fc4a1a, #f39c12);
+  }
+  
+  .container{
+    width: 400px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .logo-wrapper{
+    padding: 15% 10%;
+    text-align: center;
+    color: white;
+    
+    .logo{
+      padding: 0 10%;
+    }
+  }
+
+  .buttons{
+    display: flex;
+    flex-wrap: wrap;
+
+    .button-full{
+      flex: 0 0 100%;
+      background-color: transparent;
+      border: 1px solid white;
+      box-shadow: none;
+      color: white;
+    }
+
+    .button:not(.button-full){
+      flex: 1 0 40%;
+    }
+
+    .facebook{
+      background-color : #3b5998;
+      color: white;
+    }
+
+    .google{
+      background-color: white;
+      color: #505050;
+    }
+
+  }
+}

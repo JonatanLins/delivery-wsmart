@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>DeliveryWsmart</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openSearchBar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+
+      <button ion-button icon-only (click)="showMoreInfo()">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="grey-background">
+
+  <ion-card class="main-card">
+    <ion-card-header style="background-image: url(../../assets/imgs/banner-01.jpg)">
+      <img src="../../assets/imgs/logo.png" class="logo" alt="Logotipo do Restaurante">
+    </ion-card-header>
+    <ion-card-content>
+      <h1>DeliveryWsmart</h1>
+      <p>Endereço do Restaurante</p>
+      <p class="schedulesBtn" (click)="showSchedulesInfo()">
+        Aberto até 23:00 <ion-icon name="ios-arrow-down"></ion-icon>
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-slides spaceBetween="10" class="banner-slide" autoplay="8000">
+    <ion-slide>
+      <ion-card>
+        <img src="../../assets/imgs/banner-02.jpg"/>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card>
+        <img src="../../assets/imgs/banner-03.jpg"/>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-card>
+        <img src="../../assets/imgs/banner-04.jpg"/>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+  
+  <ion-slides class="categories-slide" slidesPerView="2.2" spaceBetween="10">
+    <ion-slide *ngFor="let category of categories" (click)="openCategory(category)">
+      <ion-card>
+        <img class="category-img"
+          src="{{ category.image }}"/>
+        <ion-card-content>
+          <ion-card-title>{{ category.title }}</ion-card-title>
+          <p>{{ category.quantity }} Opções</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card *ngFor="let category of categories">
+    <ion-card-header>
+      <h2>{{ category.title }}</h2>
+      <p>{{ category.description }}</p>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item
+          *ngFor="let item of getProducts(category)"
+          (click)="openProductPage(item)">
+          <ion-avatar item-start>
+            <img src="{{ item.image }}">
+          </ion-avatar>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.subTitle }}</p>
+          <ion-note item-end *ngIf="item.available">R$ {{ item.price }}</ion-note>
+          <ion-note item-end *ngIf="!item.available">Indisponível</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer *ngIf="cart !== []">
+  <ion-toolbar color="primary" (click)="openCartPage()">
+    <ion-icon name="cart" color="light"></ion-icon>
+    <ion-badge>{{ cart.length }}</ion-badge>
+    <div class="spacer"></div>
+    <span class="right">VER CARRINHO <strong>R$ {{ orderPrice }}</strong></span>
+  </ion-toolbar>
+</ion-footer>

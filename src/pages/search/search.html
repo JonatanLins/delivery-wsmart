@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Pesquisar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item class="searchBar">
+      <ion-input
+        [(ngModel)]="searchString"
+        name="searchString"
+        placeholder="O que você procura?"
+        type="text"
+        (input)="search()"
+      ></ion-input>
+    </ion-item>
+    
+    <div *ngFor="let category of categories">
+      <div *ngFor="let product of getProducts(category)">
+        <ion-item *ngIf="match(product) && product.available" (click)="openProductPage(product)">
+          <ion-avatar item-start>
+            <img src="{{ product.image }}">
+          </ion-avatar>
+          <h2>{{ product.title }}</h2>
+          <p>{{ product.subTitle }}</p>
+        </ion-item>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Endereço de Entrega</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>CEP</ion-label>
+        <ion-input [(ngModel)]="cep" name="cep" type="text"></ion-input>
+      </ion-item>
+ 
+      <ion-item>
+        <ion-label floating>Logradouro</ion-label>
+        <ion-input [(ngModel)]="logradouro" name="logradouro" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Complemento</ion-label>
+        <ion-input [(ngModel)]="complemento" name="complemento" type="text"></ion-input>
+      </ion-item>
+ 
+      <ion-item>
+        <ion-label floating>Número</ion-label>
+        <ion-input [(ngModel)]="numero" name="numero" type="text"></ion-input>
+      </ion-item>
+ 
+      <ion-item>
+        <ion-label floating>Bairro</ion-label>
+        <ion-input [(ngModel)]="bairro" name="bairro" type="text"></ion-input>
+      </ion-item>
+ 
+      <ion-item>
+        <ion-label floating>Cidade</ion-label>
+        <ion-input [(ngModel)]="cidade" name="cidade" type="text"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <button ion-button round color="primary" block (click)="submit()">
+      Salvar
+    </button>
+  </form>
+
+</ion-content>

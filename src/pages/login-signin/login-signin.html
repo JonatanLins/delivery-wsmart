@@ -1,0 +1,29 @@
+<ion-header no-border>
+  <ion-navbar color="transparent">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label floating color="light">E-mail</ion-label>
+        <ion-input [(ngModel)]="email" name="email" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating color="light">Senha</ion-label>
+        <ion-input [(ngModel)]="password" name="password" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <button ion-button round color="primary" block (click)="signIn()">
+      Entrar
+    </button>
+
+    <button class="link" (click)="recoverPassword()">Esqueci a senha</button>
+  </form>
+
+</ion-content>

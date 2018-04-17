@@ -1,0 +1,61 @@
+page-product {
+  .quantity-card {
+    .card-content {
+      padding-top: 6px;
+      display: flex;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .button {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .quantity {
+      font-size: 2.5rem;
+      padding: 0 1rem;
+    }
+  }
+
+  .observations-card .text-input{
+    margin: 0;
+    padding: 0 .5rem .5rem;
+    border-bottom: 1px solid #bbb;
+  }
+
+  .card-background {
+    height: 140px;
+
+    .background {
+      background-position: center;
+      background-size: cover;
+      transform: translateY(-25%);
+      filter: brightness(60%);
+    }
+
+    .subtitle {
+      position: absolute;
+      bottom: 0;
+      padding: 1rem;
+      color: white;
+    }
+  }
+
+  .footer {
+    h2 {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0.5rem 1rem;
+      color: #333;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin: 0.5rem 1rem;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Pedido nº {{ order.info.time }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <div *ngFor="let product of order.products">
+        <h2 class="productTitle">
+          <span style="color: red">{{ product.quantity }}x</span>
+          {{ product.title }}
+          <b class="right">R$ {{ product.totalPrice }}</b>
+        </h2>
+        <!-- <p *ngFor="let option of product">
+          {{  }}
+        </p> -->
+      </div>
+    </ion-item>
+    
+    <ion-item>
+      <h2>Endereço de entrega</h2>
+      <p>{{ order.address.logradouro }}, {{ order.address.numero }}</p>
+      <p>{{ order.address.complemento }}</p>
+      <p>{{ order.address.bairro }}, {{ order.address.cidade }}</p>
+      <p>{{ order.address.cep }}</p>
+    </ion-item>
+    
+    <ion-item>
+      <h2>Mais informações</h2>
+      <p>Número do pedido: {{ order.info.time }}</p>
+      <p>Status do pedido: A caminho</p>
+      <!-- <p>Data do pedido: {{ order.info.time }}</p> -->
+      <!-- <p>Forma de pagamento: {{ order.payment }}</p> -->
+    </ion-item>
+    
+    <ion-item>
+      <p>Taxa de entrega <span class="right">R$ {{ order.info.deliveryPrice }}</span></p>
+      <h2 class="totalPrice">
+        <b>Total <span class="right">R$ {{ order.info.totalPrice }}</span></b>
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <button ion-button full color="danger">Ligar para o restaurante</button>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

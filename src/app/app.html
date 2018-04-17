@@ -1,0 +1,25 @@
+<ion-menu [content]="nav" *ngIf="user">
+  <ion-header [ngStyle]="{ 'background-image': 'url(' + user.photoURL + ')' }">
+    <h2>Olá, {{ user.displayName.split(' ')[0] }}</h2>
+    <p></p>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      
+      <ion-item menuClose (click)="openAppInfoPage()">
+        <ion-icon name="information-circle"></ion-icon> Sobre nós
+      </ion-item>
+      
+      <ion-item menuClose (click)="openOrdersPage()">
+        <ion-icon name="list-box"></ion-icon> Pedidos
+      </ion-item>
+
+      <ion-item menuClose (click)="signOut()">
+        <ion-icon name="log-out"></ion-icon> Sair
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #nav [root]="rootPage"></ion-nav>

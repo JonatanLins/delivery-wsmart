@@ -1,0 +1,37 @@
+page-login-signup {
+  .content {
+    background: linear-gradient(-240deg, #fc4a1a, #f39c12);
+  }
+
+  form {
+    width: 350px;
+    max-width: 90%;
+    margin: 30px auto;
+  }
+  
+  .list {
+    .item {
+      background-color: transparent;
+      padding: 0;
+      border-top: none !important;
+      
+      &.item-md.item-input.item-input-has-focus .item-inner {
+        border-bottom: 1px solid white;
+        box-shadow: inset 0 -1px 0 0 white;
+      }
+
+      .label,
+      .input {
+        color: white;
+      }
+    }
+  }
+  
+  .button {
+    border: 1px solid white;
+    background-color: transparent;
+    color: white;
+    box-shadow: none;
+    margin-top: 50px;
+  }
+}

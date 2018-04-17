@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Seu pedido</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="grey-background">
+
+  <ion-card>
+    <ion-card-header>
+      <h2>Endereço para entrega</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-note item-end (click)="openAddressPage()">Alterar</ion-note>
+      {{ deliveryText }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <h2>Seu pedido</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngIf="!order">Seu carrinho está vazio</ion-item>
+
+        <ion-item *ngFor="let item of order; let i = index">
+          <button ion-button round class="remove-button" (click)="removeItem(i)">
+            <ion-icon name="close"></ion-icon>
+          </button>
+          <h3>{{ item.quantity }}x {{ item.title }} (R$ {{ item.totalPrice }})</h3>
+          <p *ngIf="item.observations !== ''">"{{ item.observations }}"</p>
+        </ion-item>
+
+        <ion-item class="observations-input">
+          <ion-label floating>Observações e Comentários</ion-label>
+          <ion-input type="text" [(ngModel)]="finalObservations"></ion-input>
+        </ion-item>
+
+        <ion-item class="value-item">
+          <h3>Subtotal</h3>
+          <span class="value">R$ {{ price }}</span>
+        </ion-item>
+
+        <ion-item class="value-item">
+          <h3>Taxa de entrega</h3>
+          <span class="value">R$ {{ deliveryPrice }}</span>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <h2>Total</h2>
+    <h3>R$ {{ totalPrice }}</h3>
+    <ion-buttons end>
+      <button ion-button outline color="green" (click)="buy()">
+        Comprar
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

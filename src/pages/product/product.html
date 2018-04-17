@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ product.title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="grey-background">
+
+  <ion-card class="card-background">
+    <img class="background" src="{{ product.image }}">
+    <div class="subtitle">{{ product.subTitle }}</div>
+  </ion-card>
+
+  <ion-card class="quantity-card">
+    <ion-card-header>
+      <h2>Quantidade</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <button ion-button icon-only round (click)="decreaseQuantity()">
+        <ion-icon name="remove"></ion-icon>
+      </button>
+      <span class="quantity">{{ quantity }}</span>
+      <button ion-button icon-only round (click)="increaseQuantity()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngIf="product.options">
+    <ion-card *ngFor="let option of getOptions()">
+      <ion-card-header>
+        {{ option.name }}
+        <p>{{ option.description }}</p>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list *ngIf="option.type === 'check'">
+          <ion-item *ngFor="let item of getSubOptions(option)">
+            <ion-label>{{ item.name }} (R$ {{ item.price }})</ion-label>
+            <ion-checkbox
+              checked="{{ options[option.key][item.key] }}"
+              (ionChange)="options[option.key][item.key] = !options[option.key][item.key]"
+            ></ion-checkbox>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </div>
+    
+  <ion-card class="observations-card">
+    <ion-card-header>
+      <h2>Observações (opcional)</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-input type="text" placeholder="Ex: sem picles..." [(ngModel)]="observations"></ion-input>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+    <h2>Total</h2>
+    <h3>R$ {{ price }}</h3>
+    <ion-buttons end>
+      <button ion-button outline color="green" (click)="addToCart()">
+        Adicionar ao Carrinho
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,47 @@
+page-cart{
+  .note{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1.3em;
+    text-transform: uppercase;
+  }
+
+  .label{
+    overflow: visible;
+    margin-right: 0;
+
+    .remove-button{
+      float: right;
+      transform: translateY(-7px);
+    }
+  }
+
+  .observations-input{
+    margin-bottom: 16px;
+  }
+
+  .value-item .label{
+    display: flex;
+    justify-content: space-between;
+
+    .value{
+      float: right;
+    }
+  }
+
+  .footer {
+    h2 {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0.5rem 1rem;
+      color: #333;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin: 0.5rem 1rem;
+    }
+  }
+}

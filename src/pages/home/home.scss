@@ -1,0 +1,155 @@
+page-home {
+
+  .banner-slide{
+    height: auto;
+
+    .swiper-container{
+      padding: 0 10px;
+
+      .card{
+        position: relative;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .card-title {
+        position: absolute;
+        top: 36%;
+        font-size: 2.0em;
+        width: 100%;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      .card-subtitle {
+        font-size: 1.0em;
+        position: absolute;
+        top: 52%;
+        width: 100%;
+        color: #fff;
+      }
+    }
+  }
+  
+  .categories-slide{
+    height: auto;
+
+    .swiper-container{
+      padding: 0 10px;
+
+      .card{
+        border-radius: 5px;
+
+        .category-img{
+          max-height: 180px;
+          margin: 0 auto;
+        }
+
+        .card-title{
+          font-size: 14px;
+          font-weight: 600;
+          padding: 0;
+        }
+
+        p{
+          font-size: 14px;
+          color: #555;
+        }
+      }
+    }
+  }
+
+  .card {
+    &.main-card {
+      .card-header {
+        position: relative;
+        padding: 0;
+        margin-bottom: 50px;
+        overflow: visible;
+        background-position: center;
+        background-size: cover;
+        height: 140px;
+
+        .logo {
+          position: absolute;
+          bottom: -35px;
+          width: 120px;
+          left: 35%;
+          left: calc(50% - 60px);
+        }
+      }
+
+      .card-content {
+        text-align: center;
+
+        h1 {
+          font-weight: 500;
+          margin: 1rem 0;
+        }
+
+        p.schedulesBtn {
+          margin-top: 1em;
+          color: color($colors, green);
+        }
+      }
+    }
+
+    .card-header{
+      h2, p{
+        font-size: 1.4rem !important;
+      }
+    }
+
+    .list {
+      .list-header {
+        padding-left: 0;
+      }
+
+      .item {
+        padding-left: 0;
+
+        h3 {
+          font-size: 1.6rem;
+          white-space: normal;
+          font-weight: 500;
+        }
+
+        P {
+          white-space: normal;
+        }
+      }
+    }
+  }
+
+  .footer{
+    .toolbar-content{
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .icon{
+      font-size: 3rem;
+      color: #111;
+    }
+
+    .badge{
+      background-color: #111;
+      border-radius: 500px;
+      padding: 0 5px;
+      margin: 5px;
+      line-height: 22px;
+      min-width: 22px;
+    }
+
+    .spacer{
+      flex-grow: 1;
+    }
+
+    span.right{
+      color: #111;
+      float: right;
+      font-size: 16px;
+    }
+  }
+}
