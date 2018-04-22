@@ -26,13 +26,13 @@ export class LoginSignupPage {
     let error
     if(this.name == ''){
       error = 'Escreva seu nome corretamente.'
-    } else if (this.phone == '') {
+    } else if (this.phone.length < 14) {
       error = 'Digite um telefone válido.'
-    } else if (this.cpf == '') {
+    } else if (this.cpf.length < 14) {
       error = 'Digite um CPF válido.'
-    } else if (this.email == '') {
+    } else if (this.email === '') {
       error = 'Digite um email válido.'
-    } else if (this.password.split('').length <= 8) {
+    } else if (this.password.length <= 6) {
       error = 'Senha curta demais.'
     } else if (this.password !== this.passwordConfirm) {
       error = 'As senhas digitadas não correspondem.'

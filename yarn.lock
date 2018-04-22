@@ -600,6 +600,10 @@ braces@^2.3.0, braces@^2.3.1:
     split-string "^3.0.2"
     to-regex "^3.0.1"
 
+brmasker-ionic-3@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/brmasker-ionic-3/-/brmasker-ionic-3-1.0.9.tgz#024148762bb5fff4f95046e94f068ae5098707fa"
+
 brorand@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"

@@ -1,0 +1,110 @@
+[
+  {
+    "key": "-L9FRn7SUHXYvzqE-RHM",
+    "description": "Assados",
+    "image": "https://freeiconshop.com/wp-content/uploads/edd/meat-outline-filled.png",
+    "items": {
+      "-L9FUpRe0vhJAXFOAOoD": {
+        "image": "https://freeiconshop.com/wp-content/uploads/edd/meat-outline-filled.png",
+        "price": "4.99",
+        "subTitle": "Muito bom Editado",
+        "title": "Outra carne"
+      }
+    },
+    "title": "Carnes"
+  },
+  {
+    "key": "akjhjknol",
+    "description": "Massas deliciosas e feitas na hora",
+    "image": "https://icon-icons.com/icons2/1286/PNG/512/72_85243.png",
+    "items": {
+      "khjvhjbjk": {
+        "available": true,
+        "image": "https://www.receitadevovo.com.br/gbau/sistema/receitas/img/macarrao-alho-e-oleo.jpg",
+        "options": {
+          "lknjnkjn": {
+            "choose": {
+              "jnkjdd": {
+                "name": "Opção 1",
+                "price": "1,99"
+              },
+              "mlvjfdvl": {
+                "name": "Opção 3",
+                "price": "3,49"
+              },
+              "ovjmnrklev": {
+                "name": "Opção 2",
+                "price": "2,99"
+              }
+            },
+            "description": "Escolha até 3 adicionais",
+            "max": 3,
+            "min": 0,
+            "name": "Adicionais",
+            "type": "check"
+          }
+        },
+        "price": "16,99",
+        "subTitle": "Talharim com molho à bolonhesa",
+        "title": "Talharim à Bolonhesa"
+      },
+      "lknjkmnljfe": {
+        "available": true,
+        "image": "https://www.receitadevovo.com.br/gbau/sistema/receitas/img/macarrao-alho-e-oleo.jpg",
+        "price": "16,99",
+        "subTitle": "Talharim com molho à bolonhesa",
+        "title": "Talharim à Bolonhesa"
+      }
+    },
+    "title": "Massas"
+  },
+  {
+    "key": "bkjnjihiugt",
+    "image": "https://icon-icons.com/icons2/709/PNG/512/Drinks-35_icon-icons.com_61964.png",
+    "items": {
+      "khjvhjbjk": {
+        "available": true,
+        "image": "https://www.receitadevovo.com.br/gbau/sistema/receitas/img/macarrao-alho-e-oleo.jpg",
+        "price": "16,99",
+        "subTitle": "Talharim com molho à bolonhesa",
+        "title": "Strogonoff de Frango"
+      },
+      "lbkenejfnef": {
+        "available": true,
+        "image": "https://www.receitadevovo.com.br/gbau/sistema/receitas/img/macarrao-alho-e-oleo.jpg",
+        "price": "16,99",
+        "subTitle": "Talharim com molho à bolonhesa",
+        "title": "Talharim à Bolonhesa"
+      },
+      "lknjkmnljfe": {
+        "available": true,
+        "image": "https://www.receitadevovo.com.br/gbau/sistema/receitas/img/macarrao-alho-e-oleo.jpg",
+        "price": "16,99",
+        "subTitle": "Talharim com molho à bolonhesa",
+        "title": "Talharim à Bolonhesa"
+      }
+    },
+    "title": "Pratos"
+  },
+  {
+    "key": "khjuhvu",
+    "description": "Bebidas refrescantes para matar sua sede",
+    "image": "https://icon-icons.com/icons2/709/PNG/512/Drinks-35_icon-icons.com_61964.png",
+    "items": {
+      "-L9DSIr5n_0cmY8owNNv": {
+        "available": true,
+        "image": "https://www.supernossoemcasa.com.br/e-commerce/api/doc/produto/1768/img/main_image/0/1768.jpg?width=400&height=400",
+        "price": "5,99",
+        "title": "Coca Cola"
+      },
+      "lknjkmnljfe": {
+        "available": true,
+        "image": "http://www.rangar.com.br/entregaajato/wp-content/uploads/2016/02/suco_creme.png",
+        "price": "3,49",
+        "subTitle": "",
+        "title": "Suco"
+      }
+    },
+    "title": "Bebidas"
+  }
+]

@@ -20,12 +20,18 @@
 
       <ion-item>
         <ion-label floating color="light">CPF</ion-label>
-        <ion-input [(ngModel)]="cpf" name="cpf" type="text"></ion-input>
+        <ion-input
+          [(ngModel)]="cpf" name="cpf" type="text"
+          [brmasker]="{mask:'000.000.000-00', len:14, type:'num'}"
+        ></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating color="light">Telefone</ion-label>
-        <ion-input [(ngModel)]="phone" name="phone" type="text"></ion-input>
+        <ion-input
+          [(ngModel)]="phone" name="phone" type="text"
+          [brmasker]="{phone: true}"
+        ></ion-input>
       </ion-item>
 
       <ion-item>
