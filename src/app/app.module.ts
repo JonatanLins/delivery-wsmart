@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { BrMaskerModule } from 'brmasker-ionic-3';
-import { HTTP } from '@ionic-native/http';
+import { HttpModule } from '@angular/http';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -60,6 +60,7 @@ const firebaseConfigs = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     BrMaskerModule,
+    HttpModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -81,7 +82,6 @@ const firebaseConfigs = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HTTP
   ]
 })
 export class AppModule {}

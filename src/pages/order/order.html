@@ -29,7 +29,7 @@
     <ion-item>
       <h2>Mais informações</h2>
       <p>Número do pedido: {{ order.info.time }}</p>
-      <p>Status do pedido: A caminho</p>
+      <p>Status do pedido: {{ order.info.finalized ? 'Entregue' : 'A caminho' }}</p>
       <!-- <p>Data do pedido: {{ order.info.time }}</p> -->
       <!-- <p>Forma de pagamento: {{ order.payment }}</p> -->
     </ion-item>

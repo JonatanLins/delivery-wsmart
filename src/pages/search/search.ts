@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { ProductPage } from '../product/product';
 
 
@@ -17,7 +16,6 @@ export class SearchPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public firebaseDB: AngularFireDatabase,
   ) {}
 
   getProducts(category) {

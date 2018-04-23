@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Http } from '@angular/http';
 
 
 @IonicPage()
@@ -22,9 +22,25 @@ export class AddressPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public firebaseDB: AngularFireDatabase,
-    public firebaseAuth: AngularFireAuth,
+    public http: Http,
   ) {
-    this.user = this.firebaseAuth.auth.currentUser
+
+    this.http.get('../../assets/json/user.json')
+      .map(data => data.json())
+      .subscribe(data => this.user = data)
+
+    this.http.get('../../assets/json/address.json')
+      .map(data => data.json())
+      .subscribe(data => {
+        console.log(data)
+        this.cep = data.cep
+        this.logradouro = data.logradouro
+        this.complemento = data.complemento
+        this.numero = data.numero
+        this.bairro = data.bairro
+        this.cidade = data.cidade
+      })
+
   }
 
   submit() {

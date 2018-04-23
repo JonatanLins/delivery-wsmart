@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { LoginPage } from '../login/login';
@@ -17,32 +17,32 @@ export class CartPage {
   order: Array<Object> = []
   finalObservations: string = ''
   deliveryPrice: any = '0,00'
-  user: any
+  user: any = {}
   deliveryText: string = ''
   address: any
 
   constructor(
     public navCtrl: NavController,
     public alertCtrl: AlertController,
-    public firebaseAuth: AngularFireAuth,
-    public firebaseDB: AngularFireDatabase
+    public firebaseDB: AngularFireDatabase,
+    public http: Http
   ) {
 
-    this.user = this.firebaseAuth.auth.currentUser
+    this.http.get('../../assets/json/user.json')
+      .map(data => data.json())
+      .subscribe(data => this.user = data)
 
-    this.firebaseDB.list('users/' + this.user.uid + '/cart')
-      .snapshotChanges()
-      .map(action => action.map(item => ({ ...item.payload.val() })))
+    this.http.get('../../assets/json/cart.json')
+      .map(data => data.json())
       .subscribe(data => this.order = data)
 
-    this.firebaseDB.object('users/' + this.user.uid + '/address')
-      .snapshotChanges()
-      .map(action => action.payload.val())
-      .subscribe(data => {
-        this.address = data
-        if(data) {
-          this.deliveryText = 'Entrega no endereço'
-          this.deliveryPrice = '4,99'
+    this.http.get('../../assets/json/address.json')
+      .map(data => data.json())
+      .subscribe(address => {
+        this.address = address
+        if(address) {
+          this.deliveryText = address.logradouro + ', Nº ' + address.numero
+          this.deliveryPrice = address.price
         } else {
           this.deliveryText = 'Retirar na loja'
           this.deliveryPrice = '00,00'
@@ -78,22 +78,51 @@ export class CartPage {
   }
 
   buy() {
-    this.firebaseDB.list('users/' + this.user.uid + '/orders').push({
-      address: this.address,
-      info: { 
-        time: Date.now(),
-        totalPrice: this.totalPrice,
-        deliveryPrice: this.deliveryPrice
-       },
-      products: this.order
-    })
-    this.firebaseDB.object('users/' + this.user.uid + '/cart').remove()
-    this.navCtrl.pop()
-    this.alertCtrl.create({
-      title: 'Pedido concluído',
-      message: 'Seu pedido será entregue dentro de alguns minutos!',
-      buttons: [{ text: 'Ok' }]
-    }).present();
+    let askForPayment = this.alertCtrl.create();
+    askForPayment.setTitle('Método de pagamento');
+
+    askForPayment.addInput({
+      type: 'radio',
+      label: 'À vista',
+      value: 'dinheiro',
+      checked: true
+    });
+
+    askForPayment.addInput({
+      type: 'radio',
+      label: 'Cartão na Entrega',
+      value: 'cartao-entrega'
+    });
+
+    askForPayment.addInput({
+      type: 'radio',
+      label: 'Cartão no App',
+      value: 'cartao-app'
+    });
+
+    askForPayment.addButton('Cancelar');
+    askForPayment.addButton({
+      text: 'OK',
+      handler: data => {
+        this.firebaseDB.list('users/' + this.user.uid + '/orders').push({
+          address: this.address,
+          info: { 
+            time: Date.now(),
+            totalPrice: this.totalPrice,
+            deliveryPrice: this.deliveryPrice
+           },
+          products: this.order
+        })
+        this.firebaseDB.object('users/' + this.user.uid + '/cart').remove()
+        this.navCtrl.pop()
+        this.alertCtrl.create({
+          title: 'Pedido concluído',
+          message: 'Seu pedido será entregue dentro de alguns minutos!',
+          buttons: [{ text: 'Ok' }]
+        }).present();
+      }
+    });
+    askForPayment.present();
   }
 
   get price (){

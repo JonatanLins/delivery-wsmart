@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { OrderPage } from '../order/order';
+import { Http } from '@angular/http';
 
 
 @IonicPage()
@@ -16,11 +15,17 @@ export class OrdersPage {
 
   constructor(
     public navCtrl: NavController,
-    public firebaseAuth: AngularFireAuth,
-    public firebaseDB: AngularFireDatabase,
+    public http: Http,
   ) {
-    this.user = this.firebaseAuth.auth.currentUser;
-    this.orders = this.firebaseDB.list('users/' + this.user['uid'] + '/orders').valueChanges();
+
+    this.http.get('../../assets/json/user.json')
+      .map(data => data.json())
+      .subscribe(data => this.user = data)
+
+    this.http.get('../../assets/json/orders.json')
+      .map(data => data.json())
+      .subscribe(data => this.orders = data)
+
   }
 
   openOrder(order) {

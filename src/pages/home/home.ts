@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { Http } from '@angular/http';
 import { NavController, AlertController } from 'ionic-angular';
 import { ProductPage } from '../product/product';
 import { CartPage } from '../cart/cart';
 import { SearchPage } from '../search/search';
 import { CategoryPage } from '../category/category';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'page-home',
@@ -17,24 +16,23 @@ export class HomePage {
   cart: any = []
 
   constructor(
-    public firebaseDB: AngularFireDatabase,
-    public firebaseAuth: AngularFireAuth,
+    public http: Http,
     public alertCtrl: AlertController,
     public navCtrl: NavController
   ) {
 
-    this.user = this.firebaseAuth.auth.currentUser
+    this.http.get('../../assets/json/user.json')
+      .map(data => data.json())
+      .subscribe(data => this.user = data)
 
-    this.firebaseDB.list('categories')
-      .snapshotChanges()
-      .map(action => action.map(item => ({ key: item.key, ...item.payload.val() })))
+    this.http.get('../../assets/json/products.json')
+      .map(data => data.json())
       .subscribe(data => this.categories = data)
-      
-    this.firebaseDB.list('users/' + this.user.uid + '/cart')
-      .snapshotChanges()
-      .map(action => action.map(item => ({ ...item.payload.val() })))
+
+    this.http.get('../../assets/json/cart.json')
+      .map(data => data.json())
       .subscribe(data => this.cart = data)
-    
+
   }
 
   getProducts(category) {

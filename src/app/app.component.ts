@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Http } from '@angular/http';
 
 import { HomePage } from '../pages/home/home';
 import { AppInfoPage } from '../pages/app-info/app-info';
@@ -21,7 +21,7 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public firebaseAuth: AngularFireAuth
+    public http: Http,
   ) {
 
     platform.ready().then(() => {
@@ -29,14 +29,12 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    firebaseAuth.authState.subscribe(user => {
-      if(user) {
-        this.rootPage = HomePage;
-      } else {
-        this.rootPage = LoginPage;
-      }
-      this.user = user
-    })
+    this.http.get('../assets/json/user.json')
+      .map(data => data.json())
+      .subscribe(user => {
+        this.rootPage = user ? HomePage : LoginPage;
+        this.user = user;
+      })
   }
 
   openAppInfoPage() {
@@ -48,7 +46,7 @@ export class MyApp {
   }
 
   signOut() {
-    this.firebaseAuth.auth.signOut();
+    // this.firebaseAuth.auth.signOut();
   }
 
 }
