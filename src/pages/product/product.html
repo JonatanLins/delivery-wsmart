@@ -42,6 +42,13 @@
             ></ion-checkbox>
           </ion-item>
         </ion-list>
+
+        <ion-list *ngIf="option.type === 'radio'">
+          <ion-item *ngFor="let item of getSubOptions(option)">
+            <ion-label>{{ item.name }} (R$ {{ item.price }})</ion-label>
+            <ion-radio ></ion-radio>
+          </ion-item>
+        </ion-list>
       </ion-card-content>
     </ion-card>
   </div>

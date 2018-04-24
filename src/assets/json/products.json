@@ -42,6 +42,25 @@
             "min": 0,
             "name": "Adicionais",
             "type": "check"
+          },
+          "jkbkijbo": {
+            "choose": {
+              "jnkjdd": {
+                "name": "Opção 1",
+                "price": "1,49"
+              },
+              "mlvjfdvl": {
+                "name": "Opção 3",
+                "price": "3,49"
+              },
+              "ovjmnrklev": {
+                "name": "Opção 2",
+                "price": "2,99"
+              }
+            },
+            "description": "Escolha um molho",
+            "name": "Molho",
+            "type": "radio"
           }
         },
         "price": "16,99",
