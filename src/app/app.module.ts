@@ -18,6 +18,7 @@ import { LoginSigninPage } from '../pages/login-signin/login-signin';
 import { LoginSignupPage } from '../pages/login-signup/login-signup';
 import { CartPage } from '../pages/cart/cart';
 import { AddressPage } from '../pages/address/address';
+import { CreditCardPage } from '../pages/credit-card/credit-card';
 import { OrderPage } from '../pages/order/order';
 import { OrdersPage } from '../pages/orders/orders';
 import { SearchPage } from '../pages/search/search';
@@ -52,6 +53,7 @@ const firebaseConfigs = {
     OrderPage,
     OrdersPage,
     SearchPage,
+    CreditCardPage,
   ],
   imports: [
     BrowserModule,
@@ -77,6 +79,7 @@ const firebaseConfigs = {
     OrderPage,
     OrdersPage,
     SearchPage,
+    CreditCardPage,
   ],
   providers: [
     StatusBar,

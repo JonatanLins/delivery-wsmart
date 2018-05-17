@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 
 import { LoginPage } from '../login/login';
 import { AddressPage } from '../address/address';
+import { CreditCardPage } from '../credit-card/credit-card';
 
 
 @IonicPage()
@@ -90,36 +91,100 @@ export class CartPage {
 
     askForPayment.addInput({
       type: 'radio',
-      label: 'Cartão na Entrega',
-      value: 'cartao-entrega'
+      label: 'Cartão 1 na Entrega',
+      value: 'cartao-1-entrega'
     });
 
     askForPayment.addInput({
       type: 'radio',
-      label: 'Cartão no App',
-      value: 'cartao-app'
+      label: 'Cartão 2 na Entrega',
+      value: 'cartao-2-entrega'
+    });
+
+    askForPayment.addInput({
+      type: 'radio',
+      label: 'Cartão 1 no App',
+      value: 'cartao-1-app'
+    });
+
+    askForPayment.addInput({
+      type: 'radio',
+      label: 'Cartão 2 no App',
+      value: 'cartao-2-app'
     });
 
     askForPayment.addButton('Cancelar');
     askForPayment.addButton({
-      text: 'OK',
+      text: 'Confirmar',
       handler: data => {
-        this.firebaseDB.list('users/' + this.user.uid + '/orders').push({
-          address: this.address,
-          info: { 
-            time: Date.now(),
-            totalPrice: this.totalPrice,
-            deliveryPrice: this.deliveryPrice
-           },
-          products: this.order
-        })
-        this.firebaseDB.object('users/' + this.user.uid + '/cart').remove()
-        this.navCtrl.pop()
-        this.alertCtrl.create({
-          title: 'Pedido concluído',
-          message: 'Seu pedido será entregue dentro de alguns minutos!',
-          buttons: [{ text: 'Ok' }]
-        }).present();
+        if(data === 'dinheiro') {
+          this.alertCtrl.create({
+            title: 'Troco',
+            message: 'É necessário levar troco?',
+            buttons: [
+              {
+                text: 'Não',
+                handler: () => {
+                  this.alertCtrl.create({
+                    title: 'Pedido concluído',
+                    message: 'Seu pedido será entregue dentro de alguns minutos!',
+                    buttons: [{ text: 'OK' }]
+                  }).present();
+                  this.navCtrl.pop()
+                }
+              },
+              {
+                text: 'Sim',
+                handler: data => {
+                  this.alertCtrl.create({
+                    title: 'Dinheiro',
+                    message: 'Quanto você pretende pagar?',
+                    inputs: [
+                      {
+                        name: 'value',
+                        placeholder: 'Valor R$'
+                      },
+                    ],
+                    buttons: [
+                      { text: 'Cancelar' },
+                      {
+                        text: 'Ok',
+                        handler: data => {
+                          this.alertCtrl.create({
+                            title: 'Pedido concluído',
+                            message: 'Seu pedido será entregue dentro de alguns minutos!',
+                            buttons: [{ text: 'OK' }]
+                          }).present();
+                          this.navCtrl.pop()
+                        }
+                      }
+                    ]
+                  }).present()
+                }
+              }
+            ]
+
+          }).present();
+        } else if(data.indexOf('app') !== -1) {
+          this.navCtrl.push(CreditCardPage)
+        } else {
+          this.firebaseDB.list('users/' + this.user.uid + '/orders').push({
+            address: this.address,
+            info: { 
+              time: Date.now(),
+              totalPrice: this.totalPrice,
+              deliveryPrice: this.deliveryPrice
+              },
+            products: this.order
+          })
+          this.firebaseDB.object('users/' + this.user.uid + '/cart').remove()
+          this.navCtrl.pop()
+          this.alertCtrl.create({
+            title: 'Pedido concluído',
+            message: 'Seu pedido será entregue dentro de alguns minutos!',
+            buttons: [{ text: 'OK' }]
+          }).present();
+        }
       }
     });
     askForPayment.present();
